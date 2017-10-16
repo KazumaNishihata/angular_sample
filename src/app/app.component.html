@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let message of messages">
+  <li *ngFor="let message of messages | async">
     <ng-container *ngIf="!message.edit; else editView">
       <input type="button" value="編集"
         (click)="changeEditMessage(message.id, message.text)">

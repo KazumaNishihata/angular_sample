@@ -14,8 +14,7 @@ export class AppComponent implements OnInit {
   /**
    * メッセージ表示用のデータ
    */
-  messages: Messages;
-
+  public messages: Observable<Messages|null> = null;
   /**
    * 新規登録用のフォーム
    */
@@ -38,9 +37,9 @@ export class AppComponent implements OnInit {
     this.setMessage();
   }
   setMessage(): void {
-    this.service.getMessages().subscribe(messages => {
-      this.messages = messages;
-    });
+    // テンプレート一覧
+    this.messages = this.service.messages;
+    this.service.getMessages();
   }
   createMessage(): void {
     if (!this.createForm.value.text) {
