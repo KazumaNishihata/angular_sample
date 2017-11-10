@@ -1,43 +1,6 @@
+<router-outlet></router-outlet>
+<hr>
 <ul>
-  <li *ngFor="let message of messages | async">
-    <ng-container *ngIf="!message.edit; else editView">
-      <input type="button" value="編集"
-        (click)="changeEditMessage(message.id, message.text)">
-      <input type="button" value="削除"
-        (click)="deleteMessage(message.id)">
-      {{message.text}}
-    </ng-container>
-  </li>
+  <li><a [routerLink]="['/']">TOP</a></li>
+  <li><a [routerLink]="['/observable-todo']">observable todo</a></li>
 </ul>
-<ng-template #editView>
-  <form
-  [formGroup]="editForm"
-  (ngSubmit)="editMessage()"
-  >
-  <input
-    type="text"
-    formControlName="text"
-    >
-  <input
-    type="hidden"
-    formControlName="id"
-    >
-  <input
-    type="submit"
-    value="追加"
-    >
-  </form>
-</ng-template>
-<form
-  [formGroup]="createForm"
-  (ngSubmit)="createMessage()"
->
-  <input
-    type="text"
-    formControlName="text"
-    >
-  <input
-    type="submit"
-    value="追加"
-    >
-</form>
